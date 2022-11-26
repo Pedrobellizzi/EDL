@@ -36,7 +36,7 @@ typedef struct lstItem_despesa{
 } lstDespesa;
 
 typedef struct{
-	int num_conta;               //    (MEMÓRIA ESTÁTICA)
+	int num_conta;                       //    (MEMÓRIA ESTÁTICA)
 	float saldo;
 	char tipoConta[50];
 	char instituicaoFinanceira[50];
@@ -99,7 +99,7 @@ void print_contas(lstConta *item){
    while(item!=NULL){
       printf(">>Conta: %d | Saldo: %.2f | Tipo de conta: %s | Instituicao Financeira: %s\n", item->dado.num_conta, item->dado.saldo, item->dado.tipoConta, item->dado.instituicaoFinanceira);
       
-      item = item->next;                                      //    (MEMÓRIA PILHA)
+      item = item->next;                                         //    (MEMÓRIA PILHA)
    }
 }
 
@@ -108,7 +108,7 @@ void print_saldo(lstConta *item){
 	float soma=0;
 	
 	while(item!=NULL){
-      soma = soma + item->dado.saldo;                           //    (MEMÓRIA PILHA)
+      soma = soma + item->dado.saldo;                              //    (MEMÓRIA PILHA)
       item = item->next;
    }
    
@@ -125,7 +125,7 @@ lstConta *cadastrar_conta(lstConta *lista){
    (*novo).next = lista;
    (*novo).next_rec = NULL;
    (*novo).next_des = NULL;
-   lista = novo;                                                      //    (MEMÓRIA PILHA)
+   lista = novo;                                                         //    (MEMÓRIA PILHA)
    
 	return lista;
 }
@@ -138,7 +138,7 @@ lstConta *excluir_conta(lstConta *lista){
 	lstConta *item_posterior=lista;
 	lstConta *item_anterior=malloc(sizeof(lstConta));
 	lstConta *indesejado=malloc(sizeof(lstConta));
-	int i=0;                                                        //    (MEMÓRIA PILHA)
+	int i=0;                                                           //    (MEMÓRIA PILHA)
 	
 	while(item_posterior!=NULL)
 	{
@@ -160,13 +160,13 @@ lstConta *excluir_conta(lstConta *lista){
 				
 			while(lista_rec!=NULL)
 			{
-				lstReceita *aux_rec=lista_rec;                //    (MEMÓRIA HEAP)
+				lstReceita *aux_rec=lista_rec;                      //    (MEMÓRIA HEAP)
 				lista_rec=lista_rec->next_rec;
-				free(aux_rec);                                //    (MEMÓRIA HEAP)
+				free(aux_rec);                                     //    (MEMÓRIA HEAP)
 				aux_rec=NULL;
 			}
 			
-			lstDespesa *lista_des = malloc(sizeof(lstDespesa));          //    (MEMÓRIA HEAP)
+			lstDespesa *lista_des = malloc(sizeof(lstDespesa));             //    (MEMÓRIA HEAP)
 			(*lista_des).next_des = indesejado->next_des;
 			lista_des=lista_des->next_des;
 			
@@ -175,7 +175,7 @@ lstConta *excluir_conta(lstConta *lista){
 				lstDespesa *aux_des=lista_des;
 				lista_des=lista_des->next_des;
 				free(aux_des);
-				aux_des=NULL;                               //    (MEMÓRIA HEAP)
+				aux_des=NULL;                                   //    (MEMÓRIA HEAP)
 			}
 			
 			printf("--  Conta exluida com sucesso!  --\n\n");
@@ -184,7 +184,7 @@ lstConta *excluir_conta(lstConta *lista){
 			{
 				
 				free(indesejado);
-				indesejado=NULL;                              //    (MEMÓRIA HEAP)
+				indesejado=NULL;                                  //    (MEMÓRIA HEAP)
 			
 				return item_posterior;
 			}
